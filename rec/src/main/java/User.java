@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -7,11 +8,20 @@ public class User {
 	
 	static Random rand = new Random();
 	
-	String name;
 	int id;
-	int[] ratings = new int[50];
-
+	int[] ratings;
+	int nor; //Number of ratings;
+	float[] cValues; //vector of comparison with another user X
 	private Scanner in;
+	
+	
+	public User(int id, int[] ratings) {
+		this.id = id;
+		this.ratings = ratings;
+		Arrays.fill(ratings, -1);
+		this.nor = 0;
+		cValues = new float[5];
+	}
 	
 	void setData(){
 		System.out.println("Digite o id do usuario:");
@@ -29,9 +39,14 @@ public class User {
 		}
 	}
 	void showData(){
-		for (int i = 0; i < 50; i++) {
-			System.out.println("Rating[" + i + "] = " + ratings[i] + "\n" );
-			
+		for (int i = 1; i < 51; i++) {
+			System.out.println("Movie["+i+"]: " + ratings[i]);
 		}
 	}
+	void showCmp(){
+		for (int i = 0; i < cValues.length; i++) {
+			System.out.println("Value:["+i+"]: " + cValues[i]);
+		}
+	}
+	
 }
