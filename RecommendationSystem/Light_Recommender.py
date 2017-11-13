@@ -55,6 +55,7 @@ for i in range(1000):
 
 #Menu e execução
 op = 1
+dt = []
 while op != 0:
 
     Z = int(input('Usuario: '))
@@ -62,8 +63,6 @@ while op != 0:
     for j in range(50):
         test = tf.gather(tf.gather(result, Z), j)
         dt.append(sess.run(test))
-
-
     ddf = pd.DataFrame({'ratings': dt})
     ddf['ratings'] = ddf['ratings'].astype('float')
 # ddf.sort_values(by='ratings', ascending=False, inplace=True)
